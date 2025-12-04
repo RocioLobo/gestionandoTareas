@@ -1,40 +1,117 @@
+/* ---------------------- */
+/* FONDO GENERAL */
+/* ---------------------- */
 body {
-  background-color: rgb(250, 165, 180);
   margin: 0;
-  font-family: Poppins, Arial;
+  padding: 0;
+  font-family: "Poppins", Arial;
+  background-image: url("./assets/1_5846.webp");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  transition: background 0.3s ease;
 }
 
-.container {
-  max-width: 550px;
-  margin: auto;
+/* MODO OSCURO */
+body.dark {
+  background-image: url("./assets/");
+}
+
+/* CAPA DE DESENFOQUE */
+.blur-bg {
+  backdrop-filter: blur(6px);
+  min-height: 100vh;
   padding: 20px;
 }
 
+/* ---------------------- */
+/* CONTENEDOR PRINCIPAL */
+/* ---------------------- */
+.container {
+  max-width: 300px;
+  margin: auto;
+  background: rgba(255, 240, 245, 0.85);
+  padding: 25px;
+  border-radius: 18px;
+  border: 2px solid #b92c4f;
+  box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
+  transition: background 0.3s ease;
+}
+
+/* DARK MODE */
+body.dark .container {
+  background: rgba(40, 40, 40, 0.85);
+  border-color: #fff;
+  color: white;
+}
+
+/* ---------------------- */
+/* TÍTULO */
+/* ---------------------- */
 .app-title {
   text-align: center;
-  color: #8b0a37;
   font-size: 32px;
   font-weight: bold;
+  color: #8b0a37;
   margin-bottom: 25px;
 }
 
+body.dark .app-title {
+  color: #ffadc7;
+}
+
+/* ---------------------- */
+/* BOTÓN MODO OSCURO */
+/* ---------------------- */
+.dark-btn {
+  background: #8b0a37;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  float: right;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.dark-btn:hover {
+  background: #5d0725;
+}
+
+/* ---------------------- */
 /* FORMULARIO */
+/* ---------------------- */
 .task-form {
   display: flex;
   flex-direction: column;
   gap: 12px;
   background: #ffe1ec;
   border: 2px solid #b92c4f;
-  padding: 20px;
+  padding: 18px;
   border-radius: 15px;
 }
 
+body.dark .task-form {
+  background: #333;
+  border-color: white;
+}
+
 .task-form input,
-.task-form select {
-  padding: 10px;
+.task-form select,
+.task-form textarea {
+  padding: 12px;
   border: 2px solid #b92c4f;
   border-radius: 8px;
   font-size: 16px;
+  background: white;
+}
+
+body.dark .task-form input,
+body.dark .task-form select,
+body.dark .task-form textarea {
+  background: #555;
+  border-color: white;
+  color: white;
 }
 
 .task-form button {
@@ -51,31 +128,59 @@ body {
   background-color: #5d0725;
 }
 
-.label {
-  font-weight: bold;
+/* ---------------------- */
+/* FILTROS */
+/* ---------------------- */
+.filters {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
 }
 
-/* LISTA */
-.empty {
-  text-align: center;
-  color: #5d0725;
-  margin-top: 20px;
+.filters button {
+  padding: 7px 14px;
+  border: none;
+  border-radius: 8px;
+  background: #b92c4f;
+  color: white;
+  cursor: pointer;
 }
 
+.filters button:hover {
+  background: #8b0a37;
+}
+
+/* ---------------------- */
+/* LISTA DE TAREAS */
+/* ---------------------- */
 .task-item {
   background-color: #ffe1ec;
   border: 2px solid #b92c4f;
   padding: 20px;
   border-radius: 15px;
   margin-bottom: 20px;
+  transition: transform 0.2s ease;
 }
 
+.task-item:hover {
+  transform: scale(1.02);
+}
+
+body.dark .task-item {
+  background: #2b2b2b;
+  border-color: white;
+  color: white;
+}
+
+/* COMPLETADA */
 .task-item.completed {
   opacity: 0.5;
   text-decoration: line-through;
 }
 
+/* ---------------------- */
 /* PRIORIDADES */
+/* ---------------------- */
 .prio {
   padding: 5px 10px;
   border-radius: 8px;
@@ -95,7 +200,42 @@ body {
   background-color: #4a9c48;
 }
 
-/* BOTONES */
+/* ---------------------- */
+/* CATEGORÍAS */
+/* ---------------------- */
+.category-tag {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  background: #8b0a37;
+  color: white;
+  font-size: 14px;
+}
+
+/* ---------------------- */
+/* SUBTAREAS */
+/* ---------------------- */
+.subtask-box {
+  margin-top: 10px;
+  padding-left: 10px;
+  border-left: 3px solid #b92c4f;
+}
+
+.subtask {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.subtask input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+}
+
+/* ---------------------- */
+/* BOTONES DE TAREA */
+/* ---------------------- */
 .task-buttons button {
   margin-right: 10px;
   margin-top: 10px;
@@ -111,8 +251,12 @@ body {
   background-color: #5d0725;
 }
 
+/* ---------------------- */
+/* RESPONSIVE */
+/* ---------------------- */
 @media (max-width: 480px) {
   .container {
-    width: 90%;
+    width: 92%;
+    padding: 15px;
   }
 }
